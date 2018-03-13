@@ -87,10 +87,12 @@ function createObjects(sh){
 }
 
 function init(sh){
-    var initPop = initPopulate(sh);
-    initPop();
-    shopsMenusPopulate(sh);
-    menuForms();
+    setTimeout(function() {
+        var initPop = initPopulate(sh);
+        initPop();
+        shopsMenusPopulate(sh);
+        menuForms();
+    }, 1000); 
 }
 
 function initPopulate(sh){
@@ -287,7 +289,13 @@ function menuForms(){
        p.appendChild(document.createTextNode("Productos"));
        cat.appendChild(p);
        liForm("Añadir producto", addProForm);
-       liForm("Eliminar producto", delProForm); 
+       liForm("Eliminar producto", delProForm);
+        
+       p = document.createElement("p");
+       p.setAttribute("class", "h3");
+       p.appendChild(document.createTextNode("Otros"));
+       cat.appendChild(p);
+       liForm("Guardar archivo Json", saveObjects); 
     }  
 }
 
