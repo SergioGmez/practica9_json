@@ -566,7 +566,9 @@ function sesion(){
           if (user === "prueba" && pass === "prueba"){
               document.cookie = "username=prueba";
               p.setAttribute("style", "color:green");
-              p.innerHTML = "Has iniciado sesión.";
+              
+              init = initPopulate(sh);
+              init();
         }else{
               p.setAttribute("style", "color:red");
               p.innerHTML = "Usuario o contraseña incorrectos.";  

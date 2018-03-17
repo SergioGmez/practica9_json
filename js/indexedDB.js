@@ -9,13 +9,11 @@ function startDB(obj){
          objectStore = db.createObjectStore("categories");  
          objectStore = db.createObjectStore("shops");
 
-         objectStore.transaction.oncomplete = function(event) {
-             createObjects(sh);
-         }
      };
 
        request.onsuccess = function (e){
             db = this.result;
+           createObjects(sh);
        };
 
        request.onerror = function (e){
@@ -70,18 +68,5 @@ function delDB(obj, store, key){
       };
 }
 
-function deleteDB(){
-    var DBDeleteRequest = window.indexedDB.deleteDatabase("store");
-
-    DBDeleteRequest.onerror = function(event) {
-      console.log("Error deleting database.");
-    };
-
-    DBDeleteRequest.onsuccess = function(event) {
-      console.log("Database deleted successfully");
-    };
-}
-
 startDB();
-//deleteDB();
  
